@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tefo Tişört Dünyası</title>
     <style>
-        /* Genel ayarlar */
+        /* Genel sıfırlama ve temel stil */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(to bottom, #84fab0, #8fd3f4);
@@ -37,18 +37,6 @@
             margin-bottom: 20px;
         }
 
-        /* İçerik başlığı */
-        main {
-            padding: 30px;
-            text-align: center;
-        }
-
-        main h2 {
-            font-size: 2rem;
-            color: #444;
-            margin-bottom: 20px;
-        }
-
         /* Tişörtler bölümü */
         .tshirt-section {
             padding: 20px;
@@ -58,12 +46,14 @@
             font-size: 1.8rem;
             color: #333;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .tshirt-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
+            padding: 20px;
         }
 
         .tshirt-item {
@@ -83,6 +73,7 @@
         .tshirt-item img {
             width: 100%;
             height: auto;
+            display: block;
         }
 
         .tshirt-item h3 {
@@ -111,30 +102,23 @@
         <p>En kaliteli ve şık tişörtleri keşfedin. Her tarza uygun modeller burada!</p>
     </header>
     <main>
-        <h2>Yeni Sezon Tişörtler</h2>
-        <p>En trend modellerle stilinizi yansıtın. Yeni koleksiyonumuzu şimdi inceleyin!</p>
         <section class="tshirt-section">
             <h2>Tişörtler</h2>
             <div class="tshirt-grid">
                 <div class="tshirt-item">
-                    <img src="https://via.placeholder.com/300x400" alt="Klasik Beyaz Tişört">
+                    <img src="images/tisort1.jpg" alt="Klasik Beyaz Tişört">
                     <h3>Klasik Beyaz Tişört</h3>
                     <p>Kaliteli kumaş, sade tasarım.</p>
                 </div>
                 <div class="tshirt-item">
-                    <img src="https://via.placeholder.com/300x400" alt="Desenli Siyah Tişört">
+                    <img src="images/tisort2.jpg" alt="Desenli Siyah Tişört">
                     <h3>Desenli Siyah Tişört</h3>
                     <p>Modern desen, rahat kesim.</p>
                 </div>
                 <div class="tshirt-item">
-                    <img src="https://via.placeholder.com/300x400" alt="Renkli Grafik Tişört">
+                    <img src="images/tisort3.jpg" alt="Renkli Grafik Tişört">
                     <h3>Renkli Grafik Tişört</h3>
                     <p>Canlı renkler, dikkat çeken tasarım.</p>
-                </div>
-                <div class="tshirt-item">
-                    <img src="https://via.placeholder.com/300x400" alt="Hafif Kumaş Tişört">
-                    <h3>Hafif Kumaş Tişört</h3>
-                    <p>Nefes alan kumaşıyla gün boyu rahatlık.</p>
                 </div>
             </div>
         </section>
