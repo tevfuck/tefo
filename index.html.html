@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Şansını Dene</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; margin-top: 100px; }
+    button { font-size: 20px; padding: 10px 20px; }
+    #sonuc { margin-top: 30px; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <h1>🎰 Şansını Dene Tefo!</h1>
+  <button onclick="sansiniDene()">Çarkı Çevir</button>
+  <div id="sonuc"></div>
+
+  <script>
+    function sansiniDene() {
+      const sayi = Math.floor(Math.random() * 100) + 1;
+      const sonucDiv = document.getElementById("sonuc");
+
+      if (sayi > 70) {
+        sonucDiv.innerHTML = `🎉 Kazandın! Şans sayın: ${sayi}`;
+      } else {
+        sonucDiv.innerHTML = `🙃 Olmadı, sayı: ${sayi}. Tekrar dene!`;
+      }
+    }
+  </script>
+</body>
+</html>
