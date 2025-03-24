@@ -1,59 +1,49 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, EqualTo
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SECRET_KEY'] = 'your_secret_key'
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-
-class RegisterForm(FlaskForm):
-    username = StringField('Kullanıcı Adı', validators=[InputRequired(), Length(min=4, max=20)])
-    password = PasswordField('Şifre', validators=[InputRequired(), Length(min=6)])
-    confirm_password = PasswordField('Şifre (Tekrar)', validators=[InputRequired(), EqualTo('password')])
-    submit = SubmitField('Kayıt Ol')
-
-class LoginForm(FlaskForm):
-    username = StringField('Kullanıcı Adı', validators=[InputRequired()])
-    password = PasswordField('Şifre', validators=[InputRequired()])
-    submit = SubmitField('Giriş Yap')
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegisterForm()
-    if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method='sha256')
-        new_user = User(username=form.username.data, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        flash('Başarıyla kayıt oldunuz. Giriş yapabilirsiniz!', 'success')
-        return redirect(url_for('login'))
-    return render_template('register.html', form=form)
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and check_password_hash(user.password, form.password.data):
-            flash('Giriş başarılı!', 'success')
-            return redirect(url_for('dashboard'))
-        else:
-            flash('Hatalı kullanıcı adı veya şifre', 'danger')
-    return render_template('login.html', form=form)
-
-@app.route('/dashboard')
-def dashboard():
-    return "Hoş geldiniz! Burası kullanıcı paneliniz."
-
-if __name__ == '__main__':
-    db.create_all()  # İlk çalıştırmada veritabanını oluşturmak için
-    app.run(debug=True)
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tefo Yazılım</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background-color: #333333;
+        }
+        header h1 {
+            font-size: 36px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .gallery img {
+            margin: 10px;
+            border: 2px solid #555555;
+            border-radius: 8px;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tefo Yazılım</h1>
+        <p>Hack temalı resimler</p>
+    </header>
+    <div class="gallery">
+        <img src="https://www.w3schools.com/html/pic_trulli.jpg" alt="Hack Image 1">
+        <img src="https://www.w3schools.com/html/img_girl.jpg" alt="Hack Image 2">
+        <img src="https://www.w3schools.com/html/img_chania.jpg" alt="Hack Image 3">
+    </div>
+</body>
+</html>
