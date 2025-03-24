@@ -8,7 +8,7 @@
     /* Genel Sayfa Tasarımı */
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(45deg, #ff5f6d, #ffc3a0);
+      background: linear-gradient(45deg, #FF6F61, #FF914D);
       color: white;
       display: flex;
       justify-content: center;
@@ -24,7 +24,7 @@
       font-size: 2.5rem;
       margin-bottom: 30px;
       color: #fff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
     }
 
     /* Buton Stili */
@@ -32,18 +32,18 @@
       background: #FF7E5F;
       border: none;
       padding: 20px 40px;
-      font-size: 1.2rem;
-      border-radius: 30px;
+      font-size: 1.5rem;
+      border-radius: 50px;
       cursor: pointer;
       color: white;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
       background: #FF4C6A;
       transform: translateY(-5px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     /* Sonuç Kutusu */
@@ -51,9 +51,9 @@
       margin-top: 30px;
       font-size: 1.5rem;
       padding: 20px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       min-width: 250px;
       opacity: 0;
       animation: fadeIn 1s ease-in-out forwards;
@@ -65,7 +65,7 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
@@ -81,18 +81,32 @@
       100% { transform: translateX(0); }
     }
 
-    /* Kazanma Renkleri */
-    .win {
-      color: #4CAF50;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    /* Kaybetme Renkleri */
+    /* X Atan (Çarpı) Animasyonu */
     .lose {
       color: #FF6347;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: bold;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .lose::before {
+      content: "❌";
+      font-size: 2.5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Responsive Tasarım */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1.2rem;
+      }
     }
 
   </style>
@@ -129,7 +143,7 @@
         sonucDiv.classList.add("lose");
       }
 
-      // animasyonu ekle
+      // animasyon ekle
       setTimeout(() => {
         sonucDiv.classList.add(sayi > 70 ? "fade-in" : "shake");
       }, 10);
