@@ -3,164 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tefo Tişört Satış</title>
+    <title>Renkli Şık Ana Sayfa</title>
     <style>
-        /* Reset ve temel ayarlar */
+        /* Genel stil sıfırlama */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Sayfa genel ayarları */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
             color: #333;
             line-height: 1.6;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
         }
 
+        /* Üst kısım (başlık ve açıklama) */
         header {
-            background: linear-gradient(to right, #1f4037, #99f2c8);
-            color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
+            background: url('https://via.placeholder.com/1200x200') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            font-family: 'Georgia', serif;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #222;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 10px;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
+        header p {
             font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
+        /* İçerik bölümü */
+        main {
+            text-align: center;
+            padding: 30px 20px;
         }
 
-        .hero {
-            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            height: 400px;
+        main h2 {
+            font-size: 2.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Ana bölüm kutucukları */
+        .boxes {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-        }
-
-        .products {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        .product {
+        .box {
             background: white;
+            border: 2px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 300px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .product img {
-            width: 100%;
-            display: block;
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .product h3 {
-            margin: 10px 0;
+        .box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
         }
 
-        .product p {
-            color: #555;
+        .box p {
+            color: #666;
             font-size: 0.9rem;
         }
 
-        .product a {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            text-decoration: none;
-            background: #1f4037;
-            color: white;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .product a:hover {
-            background: #99f2c8;
-        }
-
+        /* Alt kısım (footer) */
         footer {
-            background: #222;
+            background: #333;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 10px;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Tefo Tişört Satış</h1>
+        <h1>Tefo Tişört Dünyası</h1>
+        <p>En kaliteli ve şık tişörtleri keşfedin. Her tarza uygun modeller burada!</p>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#home">Ana Sayfa</a></li>
-            <li><a href="#products">Tişörtler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-        </ul>
-    </nav>
-    <section id="home" class="hero">
-        Şık ve Kaliteli Tişörtler
-    </section>
     <main>
-        <section id="products" class="products">
-            <div class="product">
-                <img src="https://via.placeholder.com/300" alt="Tişört 1">
+        <h2>Şık Tasarımlar</h2>
+        <p>En trend modellerle stilinizi yansıtın. Yeni koleksiyonumuzu şimdi inceleyin!</p>
+        <div class="boxes">
+            <div class="box">
                 <h3>Klasik Beyaz Tişört</h3>
-                <p>Kaliteli kumaş, sade tasarım.</p>
-                <a href="tişört1.html">Detayları Gör</a>
+                <p>Sade, şık ve her mevsim giyilebilir bir tasarım.</p>
             </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/300" alt="Tişört 2">
-                <h3>Desenli Siyah Tişört</h3>
-                <p>Modern desen, rahat kesim.</p>
-                <a href="tişört2.html">Detayları Gör</a>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/300" alt="Tişört 3">
+            <div class="box">
                 <h3>Renkli Grafik Tişört</h3>
-                <p>Canlı renkler, dikkat çeken tasarım.</p>
-                <a href="tişört3.html">Detayları Gör</a>
+                <p>Canlı renklerle dolu, dikkat çeken bir stil.</p>
             </div>
-        </section>
+            <div class="box">
+                <h3>Desenli Siyah Tişört</h3>
+                <p>Modern desenler ve rahat kesim ile her durumda giyilebilir.</p>
+            </div>
+        </div>
     </main>
     <footer>
-        &copy; 2025 Tefo Tişört Satış. Tüm hakları saklıdır.
+        &copy; 2025 Tefo Yazılım. Tüm hakları saklıdır.
     </footer>
 </body>
 </html>
