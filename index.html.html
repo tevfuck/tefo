@@ -3,47 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tefo Tişört Dünyası</title>
+    <title>Giriş Sayfası</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        header {
-            background-color: #444;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        header h1 {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            font-size: 2.5em;
         }
-
-        section {
+        .form-container {
+            background: #fff;
             padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
             text-align: center;
         }
-
-        img {
-            width: 300px;
-            margin: 10px;
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Tefo Tişört Dünyası</h1>
-    </header>
-    <section>
-        <h2>Görseller:</h2>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/320px-React-icon.svg.png" alt="Örnek Resim 1">
-        <img src="https://via.placeholder.com/300x400" alt="Örnek Resim 2">
-        <img src="https://via.placeholder.com/300x200" alt="Örnek Resim 3">
-    </section>
+    <div class="form-container">
+        <h2>Giriş Yap</h2>
+        <form method="POST" action="/submit-endpoint">
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="password" name="password" placeholder="Şifre" required>
+            <button type="submit">Giriş</button>
+        </form>
+    </div>
 </body>
 </html>
