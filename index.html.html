@@ -2,7 +2,33 @@
 <html>
 <head>
   <title>Şansını Dene</title>
-  <style>
+<style>
+  body { text-align: center; font-family: sans-serif; margin-top: 100px; }
+  button { font-size: 20px; padding: 10px 20px; }
+  #sonuc { margin-top: 30px; font-size: 24px; min-height: 100px; }
+
+  /* ANİMASYON */
+  .fade-in {
+    animation: fadeIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .shake {
+    animation: shake 0.4s ease;
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+</style>
     body { text-align: center; font-family: sans-serif; margin-top: 100px; }
     button { font-size: 20px; padding: 10px 20px; }
     #sonuc { margin-top: 30px; font-size: 24px; }
