@@ -1,138 +1,16 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎰 Şansını Dene Tefo!</title>
-  <style>
-    /* Genel Sayfa Tasarımı */
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #f06, #4a90e2);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      flex-direction: column;
-      text-align: center;
-      overflow: hidden;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 50px;
-      color: #fff;
-      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Buton Stili */
-    button {
-      background: linear-gradient(90deg, #ff7e5f, #feb47b);
-      border: none;
-      padding: 20px 40px;
-      font-size: 1.5rem;
-      border-radius: 50px;
-      cursor: pointer;
-      color: white;
-      transition: all 0.4s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #feb47b, #ff7e5f);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Sonuç Kutusu */
-    #sonuc {
-      margin-top: 30px;
-      font-size: 1.5rem;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 25px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      min-width: 250px;
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    .fade-in {
-      animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .shake {
-      animation: shake 0.4s ease;
-    }
-
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
-    }
-
-    /* Responsive Tasarım */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      button {
-        font-size: 1.2rem;
-        padding: 15px 30px;
-      }
-    }
-
-  </style>
+    <title>Giriş Yap</title>
 </head>
 <body>
-
-  <h1>🎰 Şansını Dene Tefo!</h1>
-  <button onclick="sansiniDene()">Çarkı Çevir</button>
-  <div id="sonuc"></div>
-
-  <script>
-    let denemeSayisi = 0;
-    let kazanmaSayisi = 0;
-
-    function sansiniDene() {
-      const sayi = Math.floor(Math.random() * 100) + 1;
-      const sonucDiv = document.getElementById("sonuc");
-
-      denemeSayisi++;
-
-      // animasyonu sıfırla
-      sonucDiv.classList.remove("fade-in", "shake", "win", "lose");
-
-      if (sayi > 70) {
-        kazanmaSayisi++;
-        sonucDiv.innerHTML = `🎉 Kazandın! Şans sayın: ${sayi}<br><br>
-          🔢 Deneme: ${denemeSayisi} <br>
-          🏆 Kazanma: ${kazanmaSayisi}`;
-        sonucDiv.classList.add("win");
-      } else {
-        sonucDiv.innerHTML = `🙃 Olmadı, sayı: ${sayi}. Tekrar dene!<br><br>
-          🔢 Deneme: ${denemeSayisi} <br>
-          🏆 Kazanma: ${kazanmaSayisi}`;
-        sonucDiv.classList.add("lose");
-      }
-
-      // animasyon ekle
-      setTimeout(() => {
-        sonucDiv.classList.add(sayi > 70 ? "fade-in" : "shake");
-      }, 10);
-    }
-  </script>
-
+    <h2>Giriş Yap</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.username.label }} {{ form.username(size=20) }}</p>
+        <p>{{ form.password.label }} {{ form.password(size=20) }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <p>Hesabınız yok mu? <a href="{{ url_for('register') }}">Kayıt olun</a>.</p>
 </body>
 </html>
