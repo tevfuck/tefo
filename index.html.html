@@ -1,17 +1,59 @@
-<!doctype html>
-<html>
-<head>
-    <title>Kayıt Ol</title>
-</head>
-<body>
-    <h2>Kayıt Ol</h2>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <p>{{ form.username.label }} {{ form.username(size=20) }}</p>
-        <p>{{ form.password.label }} {{ form.password(size=20) }}</p>
-        <p>{{ form.confirm_password.label }} {{ form.confirm_password(size=20) }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <p>Zaten bir hesabınız var mı? <a href="{{ url_for('login') }}">Giriş yapın</a>.</p>
-</body>
-</html>
+from flask import Flask, render_template, redirect, url_for, flash, request
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, EqualTo
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SECRET_KEY'] = 'your_secret_key'
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+
+class RegisterForm(FlaskForm):
+    username = StringField('Kullanıcı Adı', validators=[InputRequired(), Length(min=4, max=20)])
+    password = PasswordField('Şifre', validators=[InputRequired(), Length(min=6)])
+    confirm_password = PasswordField('Şifre (Tekrar)', validators=[InputRequired(), EqualTo('password')])
+    submit = SubmitField('Kayıt Ol')
+
+class LoginForm(FlaskForm):
+    username = StringField('Kullanıcı Adı', validators=[InputRequired()])
+    password = PasswordField('Şifre', validators=[InputRequired()])
+    submit = SubmitField('Giriş Yap')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        new_user = User(username=form.username.data, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Başarıyla kayıt oldunuz. Giriş yapabilirsiniz!', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and check_password_hash(user.password, form.password.data):
+            flash('Giriş başarılı!', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Hatalı kullanıcı adı veya şifre', 'danger')
+    return render_template('login.html', form=form)
+
+@app.route('/dashboard')
+def dashboard():
+    return "Hoş geldiniz! Burası kullanıcı paneliniz."
+
+if __name__ == '__main__':
+    db.create_all()  # İlk çalıştırmada veritabanını oluşturmak için
+    app.run(debug=True)
