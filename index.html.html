@@ -3,108 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renkli Şık Ana Sayfa</title>
+    <title>Tefo Tişört Dünyası</title>
     <style>
-        /* Genel stil sıfırlama */
+        /* Genel ayarlar */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Sayfa genel ayarları */
         body {
             font-family: 'Arial', sans-serif;
-            color: #333;
             line-height: 1.6;
-            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            color: #333;
+            background: linear-gradient(to bottom, #84fab0, #8fd3f4);
         }
 
         /* Üst kısım (başlık ve açıklama) */
         header {
             text-align: center;
             padding: 20px;
-            background: url('https://via.placeholder.com/1200x200') no-repeat center center/cover;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            background: #222;
+            color: #fff;
         }
 
         header h1 {
-            font-size: 3rem;
-            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            letter-spacing: 2px;
         }
 
         header p {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        /* İçerik bölümü */
+        /* İçerik başlığı */
         main {
+            padding: 30px;
             text-align: center;
-            padding: 30px 20px;
         }
 
         main h2 {
-            font-size: 2.5rem;
-            font-family: 'Courier New', Courier, monospace;
+            font-size: 2rem;
             color: #444;
             margin-bottom: 20px;
         }
 
-        main p {
-            font-size: 1rem;
-            color: #555;
-            max-width: 600px;
-            margin: 0 auto 30px;
+        /* Tişörtler bölümü */
+        .tshirt-section {
+            padding: 20px;
         }
 
-        /* Ana bölüm kutucukları */
-        .boxes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .tshirt-section h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .tshirt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .box {
-            background: white;
-            border: 2px solid #ddd;
+        .tshirt-item {
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .box:hover {
+        .tshirt-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .tshirt-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .tshirt-item h3 {
+            font-size: 1.4rem;
             color: #222;
+            margin: 10px 0;
         }
 
-        .box p {
+        .tshirt-item p {
+            font-size: 1rem;
             color: #666;
-            font-size: 0.9rem;
+            margin: 10px;
         }
 
-        /* Alt kısım (footer) */
         footer {
-            background: #333;
-            color: white;
+            background: #222;
+            color: #fff;
             text-align: center;
             padding: 20px 10px;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -114,22 +111,33 @@
         <p>En kaliteli ve şık tişörtleri keşfedin. Her tarza uygun modeller burada!</p>
     </header>
     <main>
-        <h2>Şık Tasarımlar</h2>
+        <h2>Yeni Sezon Tişörtler</h2>
         <p>En trend modellerle stilinizi yansıtın. Yeni koleksiyonumuzu şimdi inceleyin!</p>
-        <div class="boxes">
-            <div class="box">
-                <h3>Klasik Beyaz Tişört</h3>
-                <p>Sade, şık ve her mevsim giyilebilir bir tasarım.</p>
+        <section class="tshirt-section">
+            <h2>Tişörtler</h2>
+            <div class="tshirt-grid">
+                <div class="tshirt-item">
+                    <img src="https://via.placeholder.com/300x400" alt="Klasik Beyaz Tişört">
+                    <h3>Klasik Beyaz Tişört</h3>
+                    <p>Kaliteli kumaş, sade tasarım.</p>
+                </div>
+                <div class="tshirt-item">
+                    <img src="https://via.placeholder.com/300x400" alt="Desenli Siyah Tişört">
+                    <h3>Desenli Siyah Tişört</h3>
+                    <p>Modern desen, rahat kesim.</p>
+                </div>
+                <div class="tshirt-item">
+                    <img src="https://via.placeholder.com/300x400" alt="Renkli Grafik Tişört">
+                    <h3>Renkli Grafik Tişört</h3>
+                    <p>Canlı renkler, dikkat çeken tasarım.</p>
+                </div>
+                <div class="tshirt-item">
+                    <img src="https://via.placeholder.com/300x400" alt="Hafif Kumaş Tişört">
+                    <h3>Hafif Kumaş Tişört</h3>
+                    <p>Nefes alan kumaşıyla gün boyu rahatlık.</p>
+                </div>
             </div>
-            <div class="box">
-                <h3>Renkli Grafik Tişört</h3>
-                <p>Canlı renklerle dolu, dikkat çeken bir stil.</p>
-            </div>
-            <div class="box">
-                <h3>Desenli Siyah Tişört</h3>
-                <p>Modern desenler ve rahat kesim ile her durumda giyilebilir.</p>
-            </div>
-        </div>
+        </section>
     </main>
     <footer>
         &copy; 2025 Tefo Yazılım. Tüm hakları saklıdır.
